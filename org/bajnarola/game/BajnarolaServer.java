@@ -28,7 +28,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Random;
 
-import org.bajnarola.game.controller.GameController;
+import org.bajnarola.game.controller.GameControllerRemote;
 import org.bajnarola.networking.NetPlayer;
 import org.bajnarola.utils.BajnarolaRegistry;
 import org.bajnarola.utils.RandomString;
@@ -67,7 +67,7 @@ public class BajnarolaServer implements Remote {
 		return port;
 	}
 	
-	private void CommonConstruct(String basepath, GameController myBoard) {
+	private void CommonConstruct(String basepath, GameControllerRemote myBoard) {
 		int bindPort;
 		try {
 			bindPort = this.setRebind(basepath, myBoard);
@@ -77,12 +77,12 @@ public class BajnarolaServer implements Remote {
 		}		
 	}
 
-	public BajnarolaServer(String basepath, GameController myBoard) {
+	public BajnarolaServer(String basepath, GameControllerRemote myBoard) {
 		String s = Integer.toString(new Random().nextInt());
 ;
 		this.CommonConstruct(s + "/" + basepath, myBoard);
 	}
-	public BajnarolaServer(GameController myBoard) {
+	public BajnarolaServer(GameControllerRemote myBoard) {
 		String s = Integer.toString(new Random().nextInt()) + "/" + RandomString.generateAsciiString();
 		this.CommonConstruct(s, myBoard);
 	}
