@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Player {
 
-	static final short PLAYER_N_MEEPLE = 7;
+	public static final short PLAYER_N_MEEPLE = 7;
 	Meeple meepleList[];
 	List<Meeple> hand;
 	short score, id;

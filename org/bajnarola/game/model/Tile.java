@@ -1,5 +1,6 @@
 package org.bajnarola.game.model;
 
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -75,6 +76,10 @@ public class Tile {
 
 	public String getName() {
 		return name;
+	}
+	
+	public Collection<LandscapeElement> getLSElements(){
+		return landscapes.values();
 	}
 	
 	public LandscapeElement getLSElement(short tileSide){

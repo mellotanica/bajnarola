@@ -94,7 +94,7 @@ public class Bot {
 						iLobby = null;
 						iServer = null;
 						System.err.println("Can't reach the lobby server");
-						e1.printStackTrace();
+						//e1.printStackTrace();
 						Thread.sleep(5000);
 						continue;
 					}
@@ -117,7 +117,7 @@ public class Bot {
 							System.err.println("Game already started");
 						} else {
 							System.err.println("Can't connect to the lobby");
-							e.printStackTrace();
+							//e.printStackTrace();
 						}
 						Thread.sleep(5000);
 					}

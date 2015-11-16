@@ -93,6 +93,10 @@ public abstract class LandscapeElement {
 		return actOwners;
 	}
 	
+	public Map<Player, Integer> getOwners(){
+		return owners;
+	}
+	
 	public void clear(){
 		for (Tile t : tiles){
 			t.unlinkLSElement(this);

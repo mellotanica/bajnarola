@@ -248,26 +248,62 @@ public class Board {
 
 	/* Given a tile at position x, y, return the neighbour tile that is 
 	 * touching the first one at the specified side. */
-	private Tile getNeighbourTile(short x, short y, short side) {
+	public Tile getNeighbourTile(short x, short y, short side) {
 		String k = getNeighbourKey(x, y, side);
 		if(k != null)
 			return scenario.get(k);
 		return null;
 	}
 	
-	private String getNeighbourKey(short x, short y, short side) {
+	private static final short getNeighbourX(short x, short side){
 		switch (side) {
-			case Tile.SIDE_TOP:
-				return getKey(x,(short)(y + 1));
 			case Tile.SIDE_RIGHT:
-				return getKey((short)(x + 1),y);
-			case Tile.SIDE_BOTTOM:
-				return getKey(x,(short)(y - 1));
+				return (short)(x + 1);
 			case Tile.SIDE_LEFT:
-				return getKey((short)(x - 1),y);
+				return (short)(x - 1);
+			case Tile.SIDE_BOTTOM:
+			case Tile.SIDE_TOP:
 			case Tile.SIDE_CENTER:
 			default:
-				return null;
+				return x;
+		}
+	}
+	
+	private static final short getNeighbourY(short y, short side){
+		switch (side) {
+			case Tile.SIDE_TOP:
+				return (short)(y + 1);
+			case Tile.SIDE_BOTTOM:
+				return (short)(y - 1);
+			case Tile.SIDE_LEFT:
+			case Tile.SIDE_RIGHT:
+			case Tile.SIDE_CENTER:
+			default:
+				return y;
+		}
+	}
+	
+	private String getNeighbourKey(short x, short y, short side) {
+		short nx = getNeighbourX(x, side);
+		short ny = getNeighbourY(y, side);
+		if(nx == x && ny == y)
+			return null;
+		return getKey(nx, ny);
+	}
+	
+	public static final short getNeighbourSide(short side){
+		switch (side){
+			case Tile.SIDE_TOP:
+				return Tile.SIDE_BOTTOM;
+			case Tile.SIDE_BOTTOM:
+				return Tile.SIDE_TOP;
+			case Tile.SIDE_LEFT:
+				return Tile.SIDE_RIGHT;
+			case Tile.SIDE_RIGHT:
+				return Tile.SIDE_LEFT;
+			case Tile.SIDE_CENTER:
+			default:
+				return side;
 		}
 	}
 	

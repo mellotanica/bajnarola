@@ -46,7 +46,7 @@ public class BajnarolaServer implements Remote {
 	}
 	
 	private int setRebind(String path, Remote o) throws Exception {
-		String npath = path + "/" + o.getClass().getName();
+		String npath = path + "/GameController";
 		int port = BajnarolaRegistry.DEFAULT_PLAYER_PORT;
 		Registry r = null;
 		for (int i = 0; i < BIND_ATTEMPTS; i++) {
@@ -63,7 +63,7 @@ public class BajnarolaServer implements Remote {
 		}
 		
 		this.registry = r;
-		System.out.print("\n\tListening on '" + npath + "' ...");
+		System.out.print("\n\tListening on '" + npath + ":" + port+ "' ...");
 		return port;
 	}
 	
