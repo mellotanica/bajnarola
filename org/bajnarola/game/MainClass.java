@@ -20,7 +20,7 @@ public class MainClass {
 	
 	private static int seed; 
 	
-	public static final boolean debugPlay = false;
+	public static final boolean debugPlay = true;
 	
 	public static void main(String[] argv) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		LobbyClient     iLobby  = null;
@@ -141,9 +141,10 @@ public class MainClass {
 				
 				/* Get others dice throws */
 				Map<String,Integer> dices;
-				
+
 				dices = iClient.multicastInvoke(GameControllerRemote.class.getMethod("getDiceValue"));
 				/* Sorting players based on dice throws */
+				//TODO: handle tie-breaks
 				iClient.sortPlayerOnDiceThrow(dices);
 				
 				System.out.println("Got players:");

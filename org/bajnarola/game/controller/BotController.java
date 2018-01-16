@@ -615,6 +615,12 @@ public class BotController extends UnicastRemoteObject implements
 		this.endCause = cause;
 		this.finalScores = scores;
 		this.winner = winner;
+		
+		System.out.println((winner ? "I won!" : "I have lost"));
+		System.out.println("Scores:");
+		for(String s : scores.keySet()){
+			System.out.println(s+ ": "+scores.get(s));
+		}
 	}
 
 
